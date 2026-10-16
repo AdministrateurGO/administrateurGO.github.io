@@ -1,0 +1,111 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+<title>Ma carte Leaflet</title>
+
+<!-- CSS de Leaflet -->
+ <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+
+
+<style>
+
+#BlockOuest {
+  width: 170px;
+  height: 200px;
+  background-color: rgb(204, 187, 187);
+
+}
+
+#BlockEst {
+  width: 170px;
+  height: 420px;
+  background-color: rgb(204, 187, 187)
+
+
+}
+
+#map {
+    width: 800px;
+    height: 620px;
+
+    position: absolute;
+    left: 178px;
+    top: 8px;
+}
+
+</style>
+</head>
+<body>
+
+
+<div id="BlockOuest">
+<form>
+
+<label for="domaine">Domaine :</label>
+
+<select name="Domaine">
+  <option value="electronique">Electronique</option>
+  <option value="reseau-informatique">Reseau-Informatique</option>
+  <option value="cybersecurite">Cybersecurite</option>
+</select>
+
+
+<label for="domaine">Ville :</label>
+<input type="text" size="17"><br><br>
+
+<label for="domaine">Nom de l'entreprise :</label>
+<input type="text" size="17"><br><br>
+
+<button type="submit">Rechercher</button>
+
+</form>
+</div>
+
+<div id="BlockEst">List :</div>
+
+<!-- Emplacement de la carte -->
+<div id="map"></div>
+
+<!-- JavaScript de Leaflet -->
+ <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+
+
+<script>
+// Créer la carte
+const map = L.map('map').setView([48.8566, 2.3522], 13);
+
+// Ajouter le fond de carte
+L.tileLayer(
+'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+{
+attribution: '&copy; OpenStreetMap'
+}
+).addTo(map);
+
+// Ajouter un marqueur
+L.marker([48.8566, 2.3522])
+.addTo(map)
+.bindPopup("Paris")
+.openPopup();
+
+</script>
+
+
+<?php
+$Categorie = "Electronique, Reseau-informatique, Cybersecuriter ";
+
+function CategorieEntreprise($NomE, $CategorieE, $VilleE, $AdresseE, $MailE, $TelephoneE, $EleveE) {
+  echo "Nom $NomE Categorie $CategorieE Ville $VilleE Adresse $AdresseE Mail $MailE Telephone $TelephoneE Eleve $EleveE.<br>";
+  
+}
+CategorieEntreprise("EDF","Reseau-informatique","Nante","24 rue de la poule","EDF@edf.fr","0606060606","Galaad");
+
+?>
+
+
+</body>
+</html>
